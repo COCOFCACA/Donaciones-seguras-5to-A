@@ -1,4 +1,5 @@
 import React from "react";
+import "./ProductosCargados.css"; // <-- Importa el archivo CSS
 
 const ProductosCargados = () => {
   return (
@@ -6,7 +7,7 @@ const ProductosCargados = () => {
       {/* Encabezado */}
       <div className="flex justify-between items-center bg-gray-300 p-4">
         <div className="w-16 h-16 border border-black flex items-center justify-center">
-          <span className="text-xl">📦</span>
+          <span className="text-xl">---X----</span>
         </div>
         <div className="w-16 h-16 rounded-full border-2 border-black flex items-center justify-center">
           <span className="text-2xl">👤</span>
@@ -22,7 +23,7 @@ const ProductosCargados = () => {
       <div className="bg-white px-6 py-2 flex justify-between text-lg italic">
         <span>Nombre</span>
         <span>Destino</span>
-        <span>Condicion</span>
+        <span>Condición</span>
       </div>
 
       {/* Lista de productos */}
