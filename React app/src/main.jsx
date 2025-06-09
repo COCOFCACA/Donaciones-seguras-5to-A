@@ -1,5 +1,10 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
+import ProductosCargados from './components/App'
 
 const root = createRoot(document.getElementById('root'))
-root.render("Hola mundo")
+root.render(
+  <React.StrictMode>
+    <ProductosCargados />
+  </React.StrictMode>
+)
