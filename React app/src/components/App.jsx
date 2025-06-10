@@ -1,5 +1,6 @@
 import React from "react";
-import "./ProductosCargados.css"; // <-- Importa el archivo CSS
+import "./ProductosCargados.css"; // <-- Importa el archivo CSS"
+import { Link } from 'react-router-dom';
 
 const ProductosCargados = () => {
   return (
