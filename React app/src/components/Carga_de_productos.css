@@ -1,0 +1,63 @@
+/* ProductosCargados.css */
+
+/* Contenedor principal */
+.min-h-screen {
+  min-height: 100vh;
+}
+
+.bg-gray-300 {
+  background-color: #d1d5db; /* gris claro */
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.p-4 {
+  padding: 1rem; /* 16px */
+}
+
+.w-16 {
+  width: 4rem; /* 64px */
+}
+
+.h-16 {
+  height: 4rem; /* 64px */
+}
+
+.border {
+  border: 1px solid black;
+}
+
+.rounded-full {
+  border-radius: 9999px;
+}
+
+.rounded-lg {
+  border-radius: 0.5rem; /* 8px */
+}
+
+.rounded-xl {
+  border-radius: 0.75rem; /* 12px */
+}
+
+.text-xl {
+  font-size: 1.25rem; /* 20px */
+}
+
+.text-2xl {
+  font-size: 1.5rem; /* 24px */
+}
+

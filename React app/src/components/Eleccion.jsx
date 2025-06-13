@@ -1,8 +1,8 @@
 import React from "react";
-import "./ProductosCargados.css"; // <-- Importa el archivo CSS"
+import "./Eleccion.css"; // <-- Importa el archivo CSS"
 import { Link } from 'react-router-dom';
 
-const ProductosCargados = () => {
+const Eleccion = () => {
   return (
     <div className="min-h-screen bg-gray-300 flex flex-col">
       {/* Encabezado */}
@@ -45,4 +45,4 @@ const ProductosCargados = () => {
   );
 };
 
-export default ProductosCargados;
+export default Eleccion;
