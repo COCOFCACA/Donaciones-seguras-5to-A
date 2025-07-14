@@ -9,8 +9,7 @@ function NavBar({ avatarUrl }) {
       <div className="navbar-left">
         <img src={logo} alt="Logo Donaciones Seguras" className="navbar-logo" />
         <div className="navbar-title">
-          <span className="navbar-title-top">DONACIONES</span>
-          <span className="navbar-title-bottom">SEGURAS</span>
+          
         </div>
       </div>
       <div className="navbar-right">
