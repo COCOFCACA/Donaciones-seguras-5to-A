@@ -1,8 +1,9 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import App from './App.jsx'
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import NavBar from './Components/NavBar';
+import Home from './Home';
 // npm install react-router-dom
 //Nico, por favor acordate que vas a tener que programar así: creas cada página y componente en un archivo distinto.
 //Dentro de cada página le metes código HTML e importas el componente a utilizar, previamente programado 
@@ -10,6 +11,6 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
+    <Home />
   </StrictMode>,
 )
