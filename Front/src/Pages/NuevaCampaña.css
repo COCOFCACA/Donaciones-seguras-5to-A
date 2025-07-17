@@ -112,8 +112,8 @@ body, .nueva-campania-bg {
 
 .nueva-campania-back {
   position: absolute;
-  left: 0;
-  bottom: -60px;
+  left: -250px;
+  bottom: -30px;
   background: none;
   border: none;
   color: #b84fff;
