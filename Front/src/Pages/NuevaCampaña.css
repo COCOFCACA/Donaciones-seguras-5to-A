@@ -78,8 +78,8 @@ body, .nueva-campania-bg {
 }
 
 .nueva-campania-btn {
-  background: #f7b32b;
-  color: #2d0066;
+  background: #2d0066;
+  color: #f7b32b;
   font-size: 2rem;
   font-weight: 700;
   border: none;
@@ -95,19 +95,20 @@ body, .nueva-campania-bg {
 }
 
 .nueva-campania-btn:hover {
-  background: #b84fff;
-  color: #fff;
+  background: #f7b32b;
+  color: #b84fff;
 }
 
 .nueva-campania-btn-icon {
   font-size: 2.2rem;
   font-weight: 900;
-  color: #b84fff;
+  color: #f7b32b;
   margin-right: 8px;
+  margin-bottom: px;
 }
 
 .nueva-campania-btn:hover .nueva-campania-btn-icon {
-  color: #fff;
+  color: #b84fff;
 }
 
 .nueva-campania-back {
