@@ -1,24 +1,20 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './Home.css'
+import { useEffect, useState } from 'react';
 import NavBar from './Components/NavBar';
+import './Home.css';
 
 function Home() {
-  // TODO: Obtener estos datos de la base de datos/contexto de autenticación
-  const [userName, setUserName] = useState("Julian"); // Variable según usuario logueado
-  const [userCampaigns, setUserCampaigns] = useState([
-    {
-      id: 1,
-      name: "#TodosXBahía",
-      description: "Campaña de ayuda para Bahía"
-    },
-    {
-      id: 2, 
-      name: "Abrigo para el alma",
-      description: "Campaña de abrigos"
-    }
-  ]); // TODO: Obtener campañas del usuario desde BD
+  const [userName, setUserName] = useState('');
+  const [userCampaigns, setUserCampaigns] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:3001/api/user')
+      .then(res => res.json())
+      .then(data => setUserName(data.name));
+
+    fetch('http://localhost:3001/api/campaigns')
+      .then(res => res.json())
+      .then(data => setUserCampaigns(data));
+  }, []);
 
   const handleChooseCampaign = (campaignId) => {
     // TODO: Implementar lógica para manejar la selección de campaña
@@ -32,11 +28,10 @@ function Home() {
         <div className="welcome-section">
           <h1 className="welcome-greeting">Hola, {userName}!</h1>
           <p className="welcome-subtitle">Necesitas ayuda? Estas campañas te podrían servir!</p>
-          
           <div className="campaigns-container">
             {userCampaigns.map((campaign, index) => (
-              <div 
-                key={campaign.id} 
+              <div
+                key={campaign.id}
                 className="campaign-row"
                 onClick={() => handleChooseCampaign(campaign.id)}
               >
@@ -53,7 +48,7 @@ function Home() {
         </div>
       </div>
     </>
-  )
+  );
 }
 
-export default Home
+export default Home;
