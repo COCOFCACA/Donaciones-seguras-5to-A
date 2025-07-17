@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
-import NavBar from './Components/NavBar';
+import { useNavigate } from 'react-router-dom';
+import NavBar from '/src/Components/NavBar';
 import './Home.css';
 
 function Home() {
   const [userName, setUserName] = useState('');
   const [userCampaigns, setUserCampaigns] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch('http://localhost:3001/api/user')
@@ -45,6 +47,9 @@ function Home() {
               </div>
             ))}
           </div>
+          <button className="new-campaign-btn lower" onClick={() => navigate('/nueva-campaña')}>
+            Nueva Campaña
+          </button>
         </div>
       </div>
     </>

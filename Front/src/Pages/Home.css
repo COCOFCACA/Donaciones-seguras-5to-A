@@ -99,3 +99,28 @@ body {
   height: 1px;
   background: #f7b32b;
 }
+
+.new-campaign-btn {
+  background: #2d0066;
+  color: #f7b32b;
+  font-weight: 700;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 12px;
+  padding: 8px 32px;
+  margin-bottom: 32px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: none;
+}
+
+.new-campaign-btn.lower {
+  margin-top: 120px;
+}
+
+.new-campaign-btn:hover {
+  background: #f7b32b;
+  color: #b84fff;
+  box-shadow: 0 0 16px #f7b32b, 0 4px 24px rgba(0,0,0,0.3);
+  text-shadow: none;
+}
