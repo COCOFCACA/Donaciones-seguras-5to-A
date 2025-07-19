@@ -1,37 +1,51 @@
 const express = require('express');
 const cors = require('cors');
-const mysql = require('mysql2/promise');
+const { Pool } = require('pg');
 
 const app = express();
 app.use(cors());
 
-// Cambia estos datos según tu base de datos en Docker
-const dbConfig = {
-  host: 'localhost', // o el nombre del servicio si usas docker-compose
-  user: 'root',      // tu usuario
-  password: 'tu_password', // tu contraseña
-  database: 'tu_basededatos', // tu base de datos
-  port: 3306         // el puerto que usas en Docker
-};
-
-// Endpoint para obtener el usuario (ajusta la consulta según tu tabla)
-app.get('/api/user', async (req, res) => {
-  const connection = await mysql.createConnection(dbConfig);
-  const [rows] = await connection.execute('SELECT nombre FROM usuarios WHERE id = 1');
-  await connection.end();
-  res.json({ name: rows[0]?.nombre || 'Usuario' });
+// Configuración para Neon PostgreSQL
+const pool = new Pool({
+  connectionString: 'postgresql://neondb_owner:npg_fO6oLuwimZ3U@ep-winter-silence-acjl8u6i-pooler.sa-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require',
+  ssl: { rejectUnauthorized: false }
 });
 
-// Endpoint para obtener campañas del usuario (ajusta la consulta según tu tabla)
+// Endpoint para obtener el usuario
+app.get('/api/user', async (req, res) => {
+  const client = await pool.connect();
+  try {
+    const result = await client.query('SELECT nombre FROM usuarios WHERE id = 1');
+    res.json({ name: result.rows[0]?.nombre || 'Usuario' });
+  } finally {
+    client.release();
+  }
+});
+
+// Endpoint para obtener campañas del usuario
 app.get('/api/campaigns', async (req, res) => {
   const userId = 1; // puedes cambiarlo por el usuario logueado
-  const connection = await mysql.createConnection(dbConfig);
-  const [rows] = await connection.execute(
-    'SELECT id, nombre as name, descripcion as description FROM campañas WHERE usuario_id = ?',
-    [userId]
-  );
-  await connection.end();
-  res.json(rows);
+  const client = await pool.connect();
+  try {
+    const result = await client.query(
+      'SELECT id, nombre as name, descripcion as description FROM campañas WHERE usuario_id = $1',
+      [userId]
+    );
+    res.json(result.rows);
+  } finally {
+    client.release();
+  }
+});
+
+// Endpoint para probar la conexión a la base de datos
+app.get('/api/test', async (req, res) => {
+  const client = await pool.connect();
+  try {
+    const result = await client.query('SELECT 1 AS test');
+    res.json(result.rows[0]);
+  } finally {
+    client.release();
+  }
 });
 
 app.listen(3001, () => console.log('API corriendo en http://localhost:3001'));
